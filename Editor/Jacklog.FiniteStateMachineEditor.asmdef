@@ -1,0 +1,16 @@
+{
+    "name": "Jacklog.FiniteStateMachineEditor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:e9cd1a776e6ee46e1ab956dda21fac39"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
