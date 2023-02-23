@@ -1,6 +1,6 @@
 {
     "name": "Jacklog.FiniteStateMachineEditor",
-    "rootNamespace": "",
+    "rootNamespace": "Jacklog.FiniteStateMachineEditor",
     "references": [
         "GUID:e9cd1a776e6ee46e1ab956dda21fac39"
     ],

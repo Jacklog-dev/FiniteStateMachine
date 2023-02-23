@@ -1,6 +1,6 @@
 {
     "name": "Jacklog.FiniteStatemachine",
-    "rootNamespace": "",
+    "rootNamespace": "Jacklog.FiniteStateMachine",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
