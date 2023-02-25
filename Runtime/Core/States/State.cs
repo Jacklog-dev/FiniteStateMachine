@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -8,57 +9,32 @@ namespace Jacklog.FiniteStateMachine
     [UnityEngine.CreateAssetMenu(fileName = "State", menuName = "Jacklog/StateMachine/State", order = 0)]
     public class State : ScriptableObject
     {
-        public event Action<State> OnChangeState;
+        public event Action OnEnter;
+        public event Action OnExit;
         
-        [SerializeField] private string _identifier;
-
-        [SerializeField] private List<State> _children;
         
         [SerializeField] private List<TransitionEvent> _transitions;
         
 
-        private State _parent;
+        public string Id => name;
+        public List<TransitionEvent> Transitions => _transitions;
+        
 
-        public void AssignParent(State parent)
+        public void DispatchEnterState()
         {
-            _parent = parent;
+            OnEnter?.Invoke();
+        }
+        
+        public void DispatchExitState()
+        {
+            OnExit?.Invoke();
         }
 
-        public bool HasChild(State childState)
-        {
-            return Enumerable.Contains(_children, childState);
-        }
-
-        public void SubscribeTransitionEvents()
-        {
-            foreach (var transitionEvent in _transitions)
-            {
-                transitionEvent.OnTransitionTriggerd += HandleTransitionTriggerd;
-            }
-        }
-
-        public void UnsubscribeEvents()
-        {
-            foreach (var transitionEvent in _transitions)
-            {
-                transitionEvent.OnTransitionTriggerd -= HandleTransitionTriggerd;
-            }
-        }
-
-        private void HandleTransitionTriggerd(State newState)
-        {
-            if (!_parent.HasChild(newState))
-            {
-                return; 
-            }
-
-            OnChangeState?.Invoke(newState);
-        }
 
         public override bool Equals(object obj)
         {
             var item = obj as State;
-            return item != null && item._identifier.Equals(_identifier);
+            return item != null && item.name == name;
         }
     }
 }

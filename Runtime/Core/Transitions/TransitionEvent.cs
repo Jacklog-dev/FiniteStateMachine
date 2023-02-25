@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Jacklog.FiniteStateMachine
 {
     [UnityEngine.CreateAssetMenu(fileName = "State", menuName = "Jacklog/StateMachine/TransitionEvent", order = 0)]
-    public abstract class TransitionEvent : ScriptableObject
+    public class TransitionEvent : ScriptableObject
     {
         public event Action<State> OnTransitionTriggerd; 
 
@@ -12,7 +12,7 @@ namespace Jacklog.FiniteStateMachine
 
         public void Dispatch()
         {
-            
+            OnTransitionTriggerd?.Invoke(_targetState);
         }
     }
 }
