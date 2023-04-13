@@ -14,6 +14,7 @@ namespace Jacklog.FiniteStateMachine
         [SerializeField] private string _currentStateId;
         
         private State _currentState;
+        public string CurrentStateId => _currentStateId;
 
         public void Initialize()
         {
